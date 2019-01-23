@@ -1,0 +1,4 @@
+enum AvatarStyle {
+  CIRCLE,
+  TRANSPARENT,
+}

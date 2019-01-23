@@ -1,0 +1,18 @@
+
+enum ClothColor {
+  BLACK,
+  BLUE1,
+  BLUE2,
+  BLUE3,
+  GRAY1,
+  GRAY2,
+  HEATHER,
+  PASTEL_BLUE,
+  PASTEL_GREEN,
+  PASTEL_ORANGE,
+  PASTEL_RED,
+  PASTEL_YELLOW,
+  PINK,
+  RED,
+  WHITE
+}

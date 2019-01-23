@@ -1,0 +1,9 @@
+enum Accessories {
+  BLANK,
+  KURTA,
+  PRESCRIPITON01,
+  PRESCRIPITON02,
+  ROUND,
+  SUNGLASSES,
+  WAYFARERS,
+}
