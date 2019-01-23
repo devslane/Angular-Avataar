@@ -1,0 +1,27 @@
+.main-heading{
+    text-align: center;
+
+}
+.user-avatar{
+    width: 200px;
+    height: 200px;
+
+}
+.start{
+    margin: 3rem 17rem 3rem 17rem;
+}
+
+.option{
+    width: 30%;
+}
+.optionSelection{
+    width: 70%;
+}
+.main-heading-text{
+    color: rgb(106, 57, 215);
+}
+
+spacer{
+    display: flex;
+    flex-grow: 1; 
+}

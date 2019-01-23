@@ -1,3 +1,129 @@
+<div class="pl-5 pr-5" class="start">
+  <div class="d-flex flex-row main-heading justify-content-between  align-items-center">
+    <h1 class="main-heading-text">avataaars generator</h1>
+   <div>
+    <button mat-flat-button color="primary" class="heading button">Random</button>
+   </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="d-flex justify-content-center align-item-center p-2"><img class="user-avatar" alt="avatar" src="/src/assets/avataaars.png"></div>
+  <form [formGroup]="avatarForm" class="d-flex flex-column align-item-between">
+    <div class="d-flex flex-row">
+        <span class="option">Avatar Style  &nbsp; </span>
+        <mat-radio-group  formControlName="avatarStyle" >
+          <mat-radio-button> circle &nbsp; </mat-radio-button>
+          <mat-radio-button> Transparent</mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div  class="d-flex flex-row justify-content-between  align-items-center">
+      <div class="option">Top</div>
+      <mat-form-field class="optionSelection" >
+          <mat-select formControlName="top">
+            <mat-option>top</mat-option>
+          </mat-select>
+      </mat-form-field>
+    </div>
+  
+    <div class="d-flex flex-row justify-content-between  align-items-center">
+        <div class="option">Accessories</div>
+        <mat-form-field class="optionSelection">
+            <mat-select formControlName="accessories">
+              <mat-option>accessories</mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+   
+    <div class="d-flex flex-row justify-content-between  align-items-center">  
+        <div class="option">HairColor</div>
+        <mat-form-field class=" optionSelection" >
+      <mat-select formControlName="hairColor">
+        <mat-option>hairColor</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+    <div class="d-flex flex-row justify-content-between  align-items-center">
+        <div class="option">FacialHair</div>
+        <mat-form-field class="optionSelection">
+      <mat-select formControlName="facialHair">
+        <mat-option>facialHair</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+    <div class="d-flex flex-row justify-content-between  align-items-center">
+        <div class="option">FacialHairColor</div>
+        <mat-form-field class=" optionSelection">
+      <mat-select formControlName="facialHairColor">
+        <mat-option>facialHairColor</mat-option>
+      </mat-select>
+      </mat-form-field>
+    </div>
+              
+    <div class="d-flex flex-row justify-content-between  align-items-center">
+        <div class="option">Clothes</div>
+        <mat-form-field class=" optionSelection">
+        <mat-select formControlName="clothes">
+          <mat-option>clothes</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  
+    <div class="d-flex flex-row justify-content-between  align-items-center">
+        <div class="option">ColorFabric</div>
+        <mat-form-field class="optionSelection">
+        <mat-select formControlName="colorFabric">
+          <mat-option>colorFabric</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  
+    <div class="d-flex flex-row justify-content-between  align-items-center">
+        <div class="option">Eyes</div>
+        <mat-form-field class="optionSelection">
+          <mat-select formControlName="eyes">
+            <mat-option>eyes</mat-option>
+          </mat-select>
+      </mat-form-field>
+    </div>
+  
+      <div class="d-flex flex-row justify-content-between  align-items-center">
+          <div class="option">Eyebrows</div>
+          <mat-form-field class="optionSelection">
+          <mat-select formControlName="eyebrow">
+            <mat-option>eyebrow</mat-option>
+          </mat-select>
+      </mat-form-field>
+    </div>
+  
+      <div class="d-flex flex-row justify-content-between  align-items-center">
+          <div class="option">Mouth</div>
+          <mat-form-field class="optionSelection">
+          <mat-select formControlName="mouth">
+            <mat-option>mouth</mat-option>
+          </mat-select>
+      </mat-form-field>
+    </div>
+  
+      <div class="d-flex flex-row justify-content-between  align-items-center">
+          <div class="option">Skin</div>
+          <mat-form-field class="optionSelection">
+          <mat-select formControlName="skin">
+            <mat-option>skin</mat-option>
+          </mat-select>
+      </mat-form-field>    
+    </div>
+    <div  class="d-flex flex-row justify-content-between  align-items-center">
+        <div class="spacer option"></div>
+        <div class="optionSelection d-flex flex-row">
+              <button mat-flat-button color="primary" class="png_icon m-1 spacer">PNG</button>
+              <button mat-flat-button color="primary" class="svg_icon m-1 spacer">SVG</button>
+              <button mat-flat-button color="primary" class="showangular_icon m-1 spacer">Show Angular</button>
+              <button mat-flat-button color="primary" class="showimage_icon m-1 spacer">Show image </button>
+          </div>
+          <button mat-flat-button color="primary" class="tweet_icon">Tweet</button>
 
-  <app-avtaar></app-avtaar>
-
+    </div>
+    
+  </form>
+</div>
