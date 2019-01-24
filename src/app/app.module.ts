@@ -10,6 +10,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import {MatDividerModule} from '@angular/material/divider';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {MatDividerModule} from '@angular/material/divider';
     ReactiveFormsModule,
     MatDividerModule,
     MatButtonModule,
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
