@@ -4,10 +4,8 @@ import {Options} from './services/main.services';
 import {Top} from './enums/tops.enum';
 import {FacialHair} from './enums/facial-hair.enum';
 import {Cloth} from './enums/clothe.enum';
-import {Eyes} from './enums/eyes.enum';
 import {Eyebrow} from './enums/eyebrow.enum';
 import {Mouth} from './enums/mouth.enum';
-import {Skin} from './enums/skin.enum';
 import {Accessories} from './enums/accessories.enum';
 import {ClothColor} from './enums/cloth-color.enum';
 import {FacialHairColor} from './enums/facial-hair-color.enum';
@@ -16,6 +14,8 @@ import {HatColor} from './enums/hat-color.enum';
 import {HairColor} from './enums/hair-color.enum';
 import {Face} from './enums/face.enum';
 import {AvatarStyle} from './enums/avatar-style.enum';
+import {Eyes} from './enums/eyes.enum';
+import {Skin} from './enums/skin.enum';
 
 @Component({
   selector: 'app-root',
@@ -23,11 +23,9 @@ import {AvatarStyle} from './enums/avatar-style.enum';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Avtaar-Generator';
   avatarForm: FormGroup;
   options: Options;
 
-  top = Top;
 
   accessoriesArray: Array<any>;
   clothColor: Array<any>;
@@ -69,7 +67,10 @@ export class AppComponent implements OnInit {
 
     this.avatarForm.valueChanges.subscribe(value => {
       this.options = value;
+
+
     });
+
 
     this.tops = this.getEnumTupple(Top);
     this.facialHair = this.getEnumTupple(FacialHair);
@@ -92,11 +93,16 @@ export class AppComponent implements OnInit {
 
   getEnumTupple(enumRef: any): Array<any> {
     return Object.keys(enumRef).filter(k => !isNaN(+k)).map(key => {
-        return {
-          key: key,
-          value: enumRef[key]
-        };
-      });
+      return {
+        key: key,
+        value: enumRef[key]
+      };
+    });
 
+  }
+
+  getRandom() {
+    this.options = new Options();
+    this.options.getRandom();
   }
 }

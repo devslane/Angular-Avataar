@@ -1,28 +1,33 @@
-.main-heading{
-    text-align: center;
-    padding-bottom: 20px;
-}
-.main-heading-text{
-    color: rgb(106, 57, 215);
-    font-weight: 400;
-    font-size: 32px;
-}
-.user-avatar{
-    width: 200px;
-    height: 200px;
-
-}
-.start{
-    margin: 1rem 20rem 3rem 20rem;
+.main-heading {
+  text-align: center;
+  padding-bottom: 20px;
 }
 
-.option{
-    width: 30%;
+.main-heading-text {
+  color: rgb(106, 57, 215);
+  font-weight: 400;
+  font-size: 32px;
 }
-.optionSelection{
-    width: 70%;
+
+.user-avatar {
+  width: 200px;
+  height: 200px;
+
 }
-spacer{
-    display: flex;
-    flex-grow: 1; 
+
+.start {
+  margin: 1rem 20rem 3rem 20rem;
+}
+
+.option {
+  width: 30%;
+}
+
+.optionSelection {
+  width: 70%;
+}
+
+spacer {
+  display: flex;
+  flex-grow: 1;
 }

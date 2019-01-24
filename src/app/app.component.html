@@ -1,8 +1,8 @@
 <div class="pl-5 pr-5" class="start">
   <div class="d-flex flex-row main-heading justify-content-between  align-items-center">
-    <h1 class="main-heading-text">avataaars generator</h1>
+    <h1 class="main-heading-text">Avataaars Generator</h1>
     <div>
-      <button mat-flat-button color="primary" class="main-heading-button">
+      <button mat-flat-button color="primary" class="main-heading-button" (click)="getRandom()">
         <i class="fa fa-random"></i>&nbsp; Random
       </button>
     </div>
@@ -15,8 +15,8 @@
     <div class="d-flex flex-row">
       <span class="option">Avatar Style  &nbsp; </span>
       <mat-radio-group formControlName="avatarStyle">
-        <ng-container *ngFor="let option of avatarStyle">
-          <mat-radio-button [value]="+option.key">{{option.value}}</mat-radio-button>
+        <ng-container  *ngFor="let option of avatarStyle">
+          <mat-radio-button class="pl-3" [value]="+option.key">{{option.value}}</mat-radio-button>
         </ng-container>
       </mat-radio-group>
     </div>
@@ -165,23 +165,16 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div class="d-flex flex-row justify-content-between  align-items-center">
-      <div class="spacer option"></div>
+    <div class="d-flex flex-row justify-content-between  align-items-center" style="width: fit-content;">
       <div class="d-flex flex-column"></div>
-      <div class="optionSelection d-flex flex-row">
-        <button mat-flat-button color="primary" class="png_icon m-1 spacer"><i class="fa fa-download"></i> &nbsp; PNG
-        </button>
-        <button mat-flat-button color="primary" class="svg_icon m-1 spacer"><i class="fa fa-download"></i> &nbsp;SVG
-        </button>
-        <button mat-flat-button color="primary" class="showangular_icon m-1 spacer"><i class="fa fa-code"></i> &nbsp;Show
-          Angular
-        </button>
-        <button mat-flat-button color="primary" class="showimage_icon m-1 spacer"><i class="fa fa-code"></i> &nbsp;Show
-          image
-        </button>
+      <div class="d-flex flex-row">
+        <button mat-flat-button color="primary" class="png_icon m-1"><i class="fa fa-download"></i>  &nbsp; PNG</button>
+        <button mat-flat-button color="primary" class="svg_icon m-1 "><i class="fa fa-download"></i> &nbsp; SVG</button>
+        <button mat-flat-button color="primary" class="showangular_icon m-1 "><i class="fa fa-code"></i> &nbsp; Show Angular</button>
+        <button mat-flat-button color="primary" class="showimage_icon m-1"><i class="fa fa-code"></i> &nbsp; Show image</button>
         <br>
       </div>
-      <button mat-flat-button color="primary" class="tweet_icon"><i class="fa fa-twitter"></i>&nbsp; Tweet</button>
+      <button mat-flat-button color="primary" class="tweet_icon"><i class="fa fa-twitter"></i>&nbsp;  Tweet</button>
     </div>
 
   </form>

@@ -2092,7 +2092,8 @@ ${ this.accessoryService.getAccessorySvg(this.accessory)}</g>
       <g id='Mask' />
     <g id='Top/Short-Hair/The-Caesar-+-Side-Part' mask='url(#caesar_mask1)'>
     <g transform='translate(-1.000000, 0.000000)'>
-     ${ this._getfacialHair(facialHair, facialHaircolor)}<g
+     ${ this._getfacialHair(facialHair, facialHaircolor)}
+     <g
               id='Hair'
               stroke-width='1'
               fill-rule='evenodd'
@@ -2101,7 +2102,7 @@ ${ this.accessoryService.getAccessorySvg(this.accessory)}</g>
                 <use href='#caesar_path2' />
               </mask>
               <use id='Caesar' fill='#000000' href='#caesar_path2' />
-${this.colorService.gethairColor(hairColor, 'bun_mask1')}</g>
+${this.colorService.gethairColor(hairColor, 'caesar_mask2')}</g>
 ${ this.accessoryService.getAccessorySvg(this.accessory)}</g>
         </g>
       </g>`;
