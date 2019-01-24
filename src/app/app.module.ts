@@ -9,6 +9,14 @@ import {FaceServices} from './services/face.services';
 import {ColorsServices} from './services/colors.services';
 import {AccessoriesServices} from './services/accessories.services';
 import {ClothesServices} from './services/clothes.services';
+import {MatButtonModule} from '@angular/material/button';
+import {MatRadioModule} from '@angular/material/radio';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {CommonModule} from '@angular/common';
+import {MatDividerModule} from '@angular/material/divider';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -17,7 +25,16 @@ import {ClothesServices} from './services/clothes.services';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatRadioModule,
+    FormsModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    CommonModule,
+    ReactiveFormsModule,
+    MatDividerModule,
+    MatButtonModule,
+    AngularFontAwesomeModule
   ],
   providers: [
     MainServices,
