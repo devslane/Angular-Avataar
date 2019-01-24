@@ -141,4 +141,28 @@ export class Options {
     this.facialHairColor = FacialHairColor.BLACK;
     this.graphic = Graphic.SKULL;
   }
+
+
+  getRandom(){
+    this.style = this.genrateRandom(AvatarStyle);
+    this.top = this.genrateRandom(Top);
+    this.accessories = this.genrateRandom(Accessories);
+    this.hairColor = this.genrateRandom(HairColor);
+    this.facialHair = this.genrateRandom(FacialHair);
+    this.clothes = this.genrateRandom(Cloth);
+    this.clothColor = this.genrateRandom(ClothColor);
+    this.eyes = this.genrateRandom(Eyes);
+    this.eyebrow = this.genrateRandom(Eyebrow);
+    this.mouth = this.genrateRandom(Mouth);
+    this.skin = this.genrateRandom(Skin);
+    this.hatColor = this.genrateRandom(HatColor);
+    this.facialHairColor = this.genrateRandom(FacialHairColor);
+    this.graphic = this.genrateRandom(Graphic);
+
+  }
+  private genrateRandom(e: any) {
+    let len = (Object.keys(e).length/2)-1;
+    var item = (Math.floor(Math.random() * len) + 0); 
+    return item;
+  }
 }
