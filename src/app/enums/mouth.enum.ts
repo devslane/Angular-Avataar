@@ -1,4 +1,4 @@
-enum Mouth {
+export enum Mouth {
   CONCERNED,
   NONE,
   DISBELIEF,

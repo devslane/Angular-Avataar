@@ -1,4 +1,4 @@
-enum AvatarStyle {
+export enum AvatarStyle {
   CIRCLE,
   TRANSPARENT,
 }

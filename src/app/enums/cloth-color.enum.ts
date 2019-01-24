@@ -1,5 +1,4 @@
-
-enum ClothColor {
+export enum ClothColor {
   BLACK,
   BLUE1,
   BLUE2,

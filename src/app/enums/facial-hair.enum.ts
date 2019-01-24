@@ -1,4 +1,4 @@
-enum FacialHair {
+export enum FacialHair {
   BLANK,
   BEARD_MEDIUM,
   BEARD_LIGHT,

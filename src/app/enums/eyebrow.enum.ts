@@ -1,4 +1,4 @@
-enum Eyebrow {
+export enum Eyebrow {
   ANGRY,
   ANGRY_NATURAL,
   NONE,

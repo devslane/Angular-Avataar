@@ -1,4 +1,4 @@
-enum Cloth {
+export enum Cloth {
   BLAZER_SHIRT,
   BLAZER_SWEATER,
   COLLAR_SWEATER,

@@ -1,4 +1,4 @@
-enum Top {
+export enum Top {
   NO_HAIR,
   EYEPATCH,
   HAT,

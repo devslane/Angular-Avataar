@@ -1,4 +1,4 @@
-enum HatColor {
+export enum HatColor {
   BLACK,
   BLUE01,
   BLUE02,

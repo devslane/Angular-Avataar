@@ -1,4 +1,4 @@
-enum Skin {
+export enum Skin {
   TANNED,
   YELLOW,
   PALE,

@@ -1,4 +1,4 @@
-enum HairColor {
+export enum HairColor {
   AURBURN,
   BLACK,
   BLONDE,

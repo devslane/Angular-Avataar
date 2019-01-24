@@ -1,4 +1,4 @@
-enum Accessories {
+export enum Accessories {
   BLANK,
   KURTA,
   PRESCRIPITON01,

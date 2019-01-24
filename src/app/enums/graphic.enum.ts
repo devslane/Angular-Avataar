@@ -1,4 +1,4 @@
-enum Graphic {
+export enum Graphic {
   BAT,
   CUMBIA,
   DEER,
@@ -8,6 +8,6 @@ enum Graphic {
   RESIST,
   SELENA,
   BEAR,
-  skulloutline,
+  SKULLOUTLINE,
   SKULL
 }

@@ -1,4 +1,4 @@
-enum FacialHairColor {
+export enum FacialHairColor {
   AUBURN,
   BLACK,
   BLONDE,

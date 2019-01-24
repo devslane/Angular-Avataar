@@ -1,4 +1,4 @@
-enum Eyes {
+export enum Eyes {
   CLOSE,
   CRY,
   NONE,
@@ -10,5 +10,5 @@ enum Eyes {
   SQUINT,
   SURPRISED,
   WINK,
-  winkwacky
+  WINKWACKY
 }
