@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MainServices, Options} from '../services/main.services';
 import {DomSanitizer} from '@angular/platform-browser';
 
@@ -8,6 +8,7 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./avtaar.component.css']
 })
 export class AvtaarComponent implements OnInit {
+  @Input() options: Options;
 
   constructor(public mainService: MainServices, private sanitizer: DomSanitizer) { }
 
@@ -15,7 +16,7 @@ export class AvtaarComponent implements OnInit {
   }
 
   getSvg() {
-    return this.sanitizer.bypassSecurityTrustHtml(this.mainService.getSvg(new Options()));
+    return this.sanitizer.bypassSecurityTrustHtml(this.mainService.getSvg(this.options));
   }
 
 }
