@@ -17,6 +17,7 @@ import {Skin} from '../enums/skin.enum';
 import {HatColor} from '../enums/hat-color.enum';
 import {FacialHairColor} from '../enums/facial-hair-color.enum';
 import {Graphic} from '../enums/graphic.enum';
+import {Face} from '../enums/face.enum';
 
 @Injectable()
 export class MainServices {
@@ -124,10 +125,12 @@ export class Options {
   hatColor: HatColor;
   facialHairColor: FacialHairColor;
   graphic: Graphic;
+  face: Face;
 
   constructor() {
     this.style = AvatarStyle.CIRCLE;
     this.top = Top.HIJAB;
+    this.face = Face.EYEBROW;
     this.accessories = Accessories.KURTA;
     this.hairColor = HairColor.BROWN;
     this.facialHair = FacialHair.MOUSTACHE_MAGNUM;

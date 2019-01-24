@@ -1,4 +1,4 @@
-enum Face {
+export enum Face {
   MOUTH,
   NOSE,
   EYES,

@@ -208,7 +208,7 @@ export class ClothesServices {
     fill='#E6E6E6'
     fill-rule='evenodd'
     href='#shirt_path'
-      />${ this.colorService.clothColor(color, 'shirt_mask')}${this._getgraphic(g, 'shirt_mask')} `;
+      />${ this.colorService.clothColor(color, 'shirt_mask')}${this._getgraphic(g, 'shirt_mask')}</g>`;
   }
 
   private _gethoodie(color: ClothColor) {
