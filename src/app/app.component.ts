@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   avatarForm: FormGroup;
   options: Options;
 
-
+  
   accessoriesArray: Array<any>;
   clothColor: Array<any>;
   clothe: Array<any>;
@@ -103,6 +103,24 @@ export class AppComponent implements OnInit {
 
   getRandom() {
     this.options = new Options();
+   
     this.options.getRandom();
+    this.avatarForm.patchValue({
+      'avatarStyle': this.options.style,
+      'top': this.options.top,
+      'accessories': this.options.accessories,
+      'hairColor': this.options.hairColor,
+      'hatColor': this.options.hatColor,
+      'facialHair': this.options.facialHair,
+      'facialHairColor': this.options.facialHairColor,
+      'clothes': this.options.clothes,
+      'colorFabric': this.options.clothColor,
+      'eyes': this.options.eyes,
+      'eyebrow': this.options.eyebrow,
+      'mouth': this.options.mouth,
+      'skin': this.options.skin,
+      'face': this.options.face,
+      'graphic': this.options.graphic,
+    });
   }
 }
