@@ -169,13 +169,17 @@
       <div class="d-flex flex-column"></div>
       <div class="d-flex flex-row">
         <button mat-flat-button color="primary" class="png_icon m-1"><i class="fa fa-download"></i>  &nbsp; PNG</button>
-        <button mat-flat-button color="primary" class="svg_icon m-1 "><i class="fa fa-download"></i> &nbsp; SVG</button>
-        <button mat-flat-button color="primary" class="showangular_icon m-1 "><i class="fa fa-code"></i> &nbsp; Show Angular</button>
-        <button mat-flat-button color="primary" class="showimage_icon m-1"><i class="fa fa-code"></i> &nbsp; Show image</button>
+        <button mat-flat-button color="primary" class="svg_icon m-1 " (click)="downloadSvg()"><i class="fa fa-download"></i> &nbsp; SVG</button>
+        <button mat-flat-button color="primary" class="showangular_icon m-1 " (click)="toggleAngular()" *ngIf="!showAngular"><i class="fa fa-code"></i> &nbsp; Show Angular</button>
+        <button mat-flat-button color="primary" class="showangular_icon m-1 " (click)="toggleAngular()" *ngIf="showAngular"><i class="fa fa-code"></i> &nbsp; Hide Angular</button>
+        <button mat-flat-button color="primary" class="showimage_icon m-1" (click)="toggleImage()" *ngIf="!showImage"><i class="fa fa-code"></i> &nbsp; Show image</button>
+        <button mat-flat-button color="primary" class="showimage_icon m-1" (click)="toggleImage()" *ngIf="showImage"><i class="fa fa-code"></i> &nbsp; Hide image</button>
         <br>
       </div>
       <button mat-flat-button color="primary" class="tweet_icon"><i class="fa fa-twitter"></i>&nbsp;  Tweet</button>
     </div>
 
   </form>
+  <div *ngIf="showAngular"></div>
+  <div *ngIf="showImage"></div>
 </div>

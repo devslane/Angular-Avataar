@@ -1,6 +1,7 @@
+import { DomSanitizer } from '@angular/platform-browser';
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {Options} from './services/main.services';
+import { Options, MainServices } from './services/main.services';
 import {Top} from './enums/tops.enum';
 import {FacialHair} from './enums/facial-hair.enum';
 import {Cloth} from './enums/clothe.enum';
@@ -16,6 +17,7 @@ import {Face} from './enums/face.enum';
 import {AvatarStyle} from './enums/avatar-style.enum';
 import {Eyes} from './enums/eyes.enum';
 import {Skin} from './enums/skin.enum';
+import {saveAs} from "file-saver";
 
 @Component({
   selector: 'app-root',
@@ -26,6 +28,8 @@ export class AppComponent implements OnInit {
   avatarForm: FormGroup;
   options: Options;
 
+  showAngular = false;
+  showImage = false;
   
   accessoriesArray: Array<any>;
   clothColor: Array<any>;
@@ -122,5 +126,19 @@ export class AppComponent implements OnInit {
       'face': this.options.face,
       'graphic': this.options.graphic,
     });
+  }
+  toggleAngular() {
+    this.showAngular = !this.showAngular;
+  }
+  toggleImage() {
+    this.showImage = !this.showImage;
+  }
+
+  downloadSvg() {
+    const svgNode = document.getElementById('svgid');
+    const data = svgNode.outerHTML;
+    const svg = new Blob([data], { type: 'image/svg+xml' });
+    saveAs(svg, 'avatar.svg')
+    
   }
 }
