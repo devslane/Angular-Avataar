@@ -11,12 +11,12 @@
   <div class="d-flex justify-content-center align-item-center p-2">
     <app-avtaar [options]="options"></app-avtaar>
   </div>
-  <form [formGroup]="avatarForm" class="d-flex flex-column align-item-between">
+  <form [formGroup]="avatarForm"   class="d-flex flex-column align-item-between">
     <div class="d-flex flex-row">
       <span class="option">Avatar Style  &nbsp; </span>
       <mat-radio-group formControlName="avatarStyle">
         <ng-container  *ngFor="let option of avatarStyle">
-          <mat-radio-button class="pl-3" [value]="+option.key">{{option.value}}</mat-radio-button>
+          <mat-radio-button class="pl-3" color="primary" [value]="+option.key">{{option.value}}</mat-radio-button>
         </ng-container>
       </mat-radio-group>
     </div>
@@ -168,7 +168,7 @@
     <div class="d-flex flex-row justify-content-between  align-items-center" style="width: fit-content;">
       <div class="d-flex flex-column"></div>
       <div class="d-flex flex-row">
-        <button mat-flat-button color="primary" class="png_icon m-1"><i class="fa fa-download"></i>  &nbsp; PNG</button>
+        <button (click)="onDownloadPNG()" mat-flat-button color="primary" class="png_icon m-1"><i class="fa fa-download" ></i>  &nbsp; PNG</button>
         <button mat-flat-button color="primary" class="svg_icon m-1 "><i class="fa fa-download"></i> &nbsp; SVG</button>
         <button mat-flat-button color="primary" class="showangular_icon m-1 "><i class="fa fa-code"></i> &nbsp; Show Angular</button>
         <button mat-flat-button color="primary" class="showimage_icon m-1"><i class="fa fa-code"></i> &nbsp; Show image</button>
@@ -178,4 +178,6 @@
     </div>
 
   </form>
+  <canvas style="height: 500px ;width: 500px" itemref="canvasRef" id="canvasRef">
+  </canvas>
 </div>

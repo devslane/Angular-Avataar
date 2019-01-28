@@ -25,6 +25,7 @@ import {Skin} from './enums/skin.enum';
 export class AppComponent implements OnInit {
   avatarForm: FormGroup;
   options: Options;
+  private canvasRef: HTMLCanvasElement;
 
 
   accessoriesArray: Array<any>;
@@ -42,6 +43,7 @@ export class AppComponent implements OnInit {
   skin: Array<any>;
   tops: Array<any>;
   avatarStyle: Array<any>;
+  public image: any;
 
 
   ngOnInit() {
@@ -66,9 +68,8 @@ export class AppComponent implements OnInit {
 
 
     this.avatarForm.valueChanges.subscribe(value => {
+      console.log(value);
       this.options = value;
-
-
     });
 
 
@@ -104,5 +105,36 @@ export class AppComponent implements OnInit {
   getRandom() {
     this.options = new Options();
     this.options.getRandom();
+  }
+
+  public onDownloadPNG = () => {
+    const svgNode = document.getElementById('this.avatarRef');
+    const canvas = document.getElementById('canvasRef') as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const anyWindow = window as any;
+    const DOMURL = anyWindow.URL || anyWindow.webkitURL || window;
+
+    const data = svgNode.outerHTML;
+    const img = new Image();
+    const svg = new Blob([data], {type: 'image/svg+xml'});
+    const url = DOMURL.createObjectURL(svg);
+
+    img.onload = () => {
+      ctx.save();
+      ctx.scale(2, 2);
+      ctx.drawImage(img, 0, 0);
+      ctx.restore();
+      DOMURL.revokeObjectURL(url);
+      this.canvasRef.toBlob(imageBlob => {
+        this.triggerDownload(imageBlob, 'avataaars.png');
+      });
+    };
+    img.src = url;
+  };
+
+  private triggerDownload(imageBlob: Blob, fileName: string) {
+    FileSaver.saveAs(imageBlob, fileName);
   }
 }
