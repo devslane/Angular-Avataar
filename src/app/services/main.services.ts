@@ -149,6 +149,7 @@ export class Options {
   getRandom() {
     this.style = this.genrateRandom(AvatarStyle);
     this.top = this.genrateRandom(Top);
+    this.face = this.genrateRandom(Face);
     this.accessories = this.genrateRandom(Accessories);
     this.hairColor = this.genrateRandom(HairColor);
     this.facialHair = this.genrateRandom(FacialHair);

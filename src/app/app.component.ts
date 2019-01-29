@@ -16,6 +16,7 @@ import {Face} from './enums/face.enum';
 import {AvatarStyle} from './enums/avatar-style.enum';
 import {Eyes} from './enums/eyes.enum';
 import {Skin} from './enums/skin.enum';
+import {saveAs} from 'file-saver';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,8 @@ export class AppComponent implements OnInit {
   options: Options;
   private canvasRef: HTMLCanvasElement;
 
+  showAngular = false;
+  showImage = false;
 
   accessoriesArray: Array<any>;
   clothColor: Array<any>;
@@ -68,7 +71,6 @@ export class AppComponent implements OnInit {
 
 
     this.avatarForm.valueChanges.subscribe(value => {
-      console.log(value);
       this.options = value;
     });
 
@@ -104,37 +106,71 @@ export class AppComponent implements OnInit {
 
   getRandom() {
     this.options = new Options();
+
     this.options.getRandom();
+    this.avatarForm.patchValue({
+      'avatarStyle': this.options.style,
+      'top': this.options.top,
+      'accessories': this.options.accessories,
+      'hairColor': this.options.hairColor,
+      'hatColor': this.options.hatColor,
+      'facialHair': this.options.facialHair,
+      'facialHairColor': this.options.facialHairColor,
+      'clothes': this.options.clothes,
+      'colorFabric': this.options.clothColor,
+      'eyes': this.options.eyes,
+      'eyebrow': this.options.eyebrow,
+      'mouth': this.options.mouth,
+      'skin': this.options.skin,
+      'face': this.options.face,
+      'graphic': this.options.graphic,
+    });
+  }
+
+  toggleAngular() {
+    this.showAngular = !this.showAngular;
+  }
+
+  toggleImage() {
+    this.showImage = !this.showImage;
+  }
+
+  downloadSvg() {
+    const svgNode = document.getElementById('svgid');
+    const data = svgNode.outerHTML;
+    const svg = new Blob([data], {type: 'image/svg+xml'});
+    saveAs(svg, 'avatar.svg');
   }
 
   public onDownloadPNG = () => {
-    const svgNode = document.getElementById('this.avatarRef');
+    const svgNode = document.getElementById('svgid');
     const canvas = document.getElementById('canvasRef') as HTMLCanvasElement;
     const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, 100, 100);
 
     const anyWindow = window as any;
     const DOMURL = anyWindow.URL || anyWindow.webkitURL || window;
-
     const data = svgNode.outerHTML;
-    const img = new Image();
-    const svg = new Blob([data], {type: 'image/svg+xml'});
-    const url = DOMURL.createObjectURL(svg);
 
+    const svg = new Blob([data], {type: 'image/svg+xml'});
+    const img = new Image();
+    const url = DOMURL.createObjectURL(svg);
     img.onload = () => {
       ctx.save();
-      ctx.scale(2, 2);
-      ctx.drawImage(img, 0, 0);
+      ctx.scale(5, 5);
+      ctx.drawImage(img, 100, 100);
       ctx.restore();
       DOMURL.revokeObjectURL(url);
-      this.canvasRef.toBlob(imageBlob => {
+      canvas.toBlob(imageBlob => {
         this.triggerDownload(imageBlob, 'avataaars.png');
       });
     };
     img.src = url;
+    console.log(svg);
+
   };
 
   private triggerDownload(imageBlob: Blob, fileName: string) {
-    FileSaver.saveAs(imageBlob, fileName);
+    saveAs(imageBlob, fileName);
   }
 }
