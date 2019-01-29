@@ -17,7 +17,8 @@ import {AvatarStyle} from './enums/avatar-style.enum';
 import {Eyes} from './enums/eyes.enum';
 import {Skin} from './enums/skin.enum';
 import {saveAs} from 'file-saver';
-
+import { Router, ActivatedRoute} from '@angular/router';
+import { Route } from '@angular/compiler/src/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -48,7 +49,7 @@ export class AppComponent implements OnInit {
   avatarStyle: Array<any>;
   public image: any;
 
-
+constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
   ngOnInit() {
     this.options = new Options();
     this.avatarForm = new FormGroup({
@@ -72,6 +73,23 @@ export class AppComponent implements OnInit {
 
     this.avatarForm.valueChanges.subscribe(value => {
       this.options = value;
+      this.router.navigate([],{queryParams: {
+        avatarStyle: AvatarStyle[this.options.style],
+        top: Top[this.options.top],
+        accessories: Accessories[this.options.accessories],
+        hairColor: HairColor[this.options.hairColor],
+        hatColor: HatColor[this.options.hatColor],
+        facialHair: FacialHair[this.options.facialHair],
+        facialHairColor: FacialHairColor[this.options.facialHairColor],
+        clothes: Cloth[this.options.clothes],
+        colorFabric: ClothColor[this.options.clothColor],
+        eyes: Eyes[this.options.eyes],
+        eyebrow: Eyebrow[this.options.eyebrow],
+        mouth: Mouth[this.options.mouth],
+        skin: Skin[this.options.skin],
+        face: Face[this.options.face],
+        graphic: Graphic[this.options.graphic],
+      }});
     });
 
 
@@ -91,6 +109,25 @@ export class AppComponent implements OnInit {
     this.hairColor = this.getEnumTupple(HairColor);
     this.avatarStyle = this.getEnumTupple(AvatarStyle);
 
+
+    this.activatedRoute.queryParams.subscribe(data=> {
+      console.log(data);
+      this.options.style = data['avatarStyle'];
+      this.options.top = data['top'];
+      this.options.accessories = data['accessories'];
+      this.options.hairColor = data['hairColor'];
+      this.options.hatColor = data['hatColor'];
+      this.options.facialHair = data['facialHair'];
+      this.options.facialHairColor = data['facialHairColor'];
+      this.options.clothes = data['clothes'];
+      this.options.clothColor = data['colorFabric'];
+      this.options.eyes = data['eyes'];
+      this.options.eyebrow = data['eyebrow'];
+      this.options.mouth = data['mouth'];
+      this.options.skin = data['skin'];
+      this.options.face = data['face'];
+      this.options.graphic = data['graphic'];
+    })
 
   }
 
@@ -125,7 +162,26 @@ export class AppComponent implements OnInit {
       'face': this.options.face,
       'graphic': this.options.graphic,
     });
+    this.router.navigate([],{queryParams: {
+      avatarStyle:     AvatarStyle[this.options.style],
+      top:             Top[this.options.top],
+      accessories:     Accessories[this.options.accessories],
+      hairColor:       HairColor[this.options.hairColor],
+      hatColor:        HatColor[this.options.hatColor],
+      facialHair:      FacialHair[this.options.facialHair],
+      facialHairColor: FacialHairColor[this.options.facialHairColor],
+      clothes:         Cloth[this.options.clothes],
+      colorFabric:     ClothColor[this.options.clothColor],
+      eyes:            Eyes[this.options.eyes],
+      eyebrow:         Eyebrow[this.options.eyebrow],
+      mouth:           Mouth[this.options.mouth],
+      skin:            Skin[this.options.skin],
+      face:            Face[this.options.face],
+      graphic:         Graphic[this.options.graphic],
+    }});
+    
   }
+
 
   toggleAngular() {
     this.showAngular = !this.showAngular;

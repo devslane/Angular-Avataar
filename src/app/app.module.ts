@@ -17,6 +17,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {CommonModule} from '@angular/common';
 import {MatDividerModule} from '@angular/material/divider';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,12 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
     ReactiveFormsModule,
     MatDividerModule,
     MatButtonModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    RouterModule.forRoot(
+      [
+        { path: "", component: AppComponent}
+      ]
+    )
   ],
   providers: [
     MainServices,
