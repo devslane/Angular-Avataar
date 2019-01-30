@@ -34,21 +34,21 @@ export class AppComponent implements OnInit {
   topsEnum = Top;
 
 
-  accessories = Accessories;
-  clothColor = ClothColor;
-  clothe = Cloth;
-  eyebrow = Eyebrow;
-  eyes = Eyes;
-  face = Face;
-  facialHair = FacialHair;
-  facialHairColor = FacialHairColor;
-  graphic = Graphic;
-  hairColor = HairColor;
-  hatColor = HatColor;
-  mouth = Mouth;
-  skin = Skin;
-  tops = Top;
-  avatarStyle = AvatarStyle;
+  accessories : Array<any>;
+  clothColor : Array<any>;
+  clothe : Array<any>;
+  eyebrow : Array<any>;
+  eyes : Array<any>;
+  face : Array<any>;
+  facialHair : Array<any>;
+  facialHairColor : Array<any>;
+  graphic : Array<any>;
+  hairColor : Array<any>;
+  hatColor : Array<any>;
+  mouth : Array<any>;
+  skin : Array<any>;
+  tops : Array<any>;
+  avatarStyle : Array<any>;
 
 constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
   ngOnInit() {
@@ -75,44 +75,44 @@ constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
     this.avatarForm.valueChanges.subscribe(value => {
       this.options = value;
       this.router.navigate([],{queryParams: {
-        avatarStyle: AvatarStyle[this.options.style],
-        top: Top[this.options.top],
-        accessories: Accessories[this.options.accessories],
-        hairColor: HairColor[this.options.hairColor],
-        hatColor: HatColor[this.options.hatColor],
-        facialHair: FacialHair[this.options.facialHair],
-        facialHairColor: FacialHairColor[this.options.facialHairColor],
-        clothes: Cloth[this.options.clothes],
-        colorFabric: ClothColor[this.options.clothColor],
-        eyes: Eyes[this.options.eyes],
-        eyebrow: Eyebrow[this.options.eyebrow],
-        mouth: Mouth[this.options.mouth],
-        skin: Skin[this.options.skin],
-        face: Face[this.options.face],
-        graphic: Graphic[this.options.graphic],
+        avatarStyle:     this.options.style,
+        top:             this.options.top,
+        accessories:     this.options.accessories,
+        hairColor:       this.options.hairColor,
+        hatColor:        this.options.hatColor,
+        facialHair:      this.options.facialHair,
+        facialHairColor: this.options.facialHairColor,
+        clothes:         this.options.clothes,
+        colorFabric:     this.options.clothColor,
+        eyes:            this.options.eyes,
+        eyebrow:         this.options.eyebrow,
+        mouth:           this.options.mouth,
+        skin:            this.options.skin,
+        face:            this.options.face,
+        graphic:         this.options.graphic,
       }});
     });
 
 
-    // this.tops = this.getEnumTupple(Top);
-    // this.facialHair = this.getEnumTupple(FacialHair);
-    // this.clothe = this.getEnumTupple(Cloth);
-    // this.eyes = this.getEnumTupple(Eyes);
-    // this.eyebrow = this.getEnumTupple(Eyebrow);
-    // this.mouth = this.getEnumTupple(Mouth);
-    // this.skin = this.getEnumTupple(Skin);
-    // this.accessoriesArray = this.getEnumTupple(Accessories);
-    // this.clothColor = this.getEnumTupple(ClothColor);
-    // this.face = this.getEnumTupple(Face);
-    // this.facialHairColor = this.getEnumTupple(FacialHairColor);
-    // this.graphic = this.getEnumTupple(Graphic);
-    // this.hatColor = this.getEnumTupple(HatColor);
-    // this.hairColor = this.getEnumTupple(HairColor);
-    // this.avatarStyle = this.getEnumTupple(AvatarStyle);
+    this.tops = this.getEnumTupple(Top);
+    this.facialHair = this.getEnumTupple(FacialHair);
+    this.clothe = this.getEnumTupple(Cloth);
+    this.eyes = this.getEnumTupple(Eyes);
+    this.eyebrow = this.getEnumTupple(Eyebrow);
+    this.mouth = this.getEnumTupple(Mouth);
+    this.skin = this.getEnumTupple(Skin);
+    this.accessories = this.getEnumTupple(Accessories);
+    this.clothColor = this.getEnumTupple(ClothColor);
+    this.face = this.getEnumTupple(Face);
+    this.facialHairColor = this.getEnumTupple(FacialHairColor);
+    this.graphic = this.getEnumTupple(Graphic);
+    this.hatColor = this.getEnumTupple(HatColor);
+    this.hairColor = this.getEnumTupple(HairColor);
+    this.avatarStyle = this.getEnumTupple(AvatarStyle);
 
 
     this.activatedRoute.queryParams.subscribe(data=> {
-      console.log(data);
+      console.log('aaaa',data);
       this.options.style = data['avatarStyle'];
       this.options.top = data['top'];
       this.options.accessories = data['accessories'];
@@ -128,19 +128,17 @@ constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
       this.options.skin = data['skin'];
       this.options.face = data['face'];
       this.options.graphic = data['graphic'];
-    })
+    });
 
   }
 
-  // getEnumTupple(enumRef: any): Array<any> {
-  //   return Object.keys(enumRef).filter(k => !isNaN(+k)).map(key => {
-  //     return {
-  //       key: key,
-  //       value: enumRef[key]
-  //     };
-  //   });
-  //
-  // }
+  getEnumTupple(enumRef: any): Array<any> {
+    return Object.keys(enumRef).map(key => {
+      return enumRef[key];
+      
+    });
+  
+  }
 
   getRandom() {
     this.options = new Options();
@@ -164,21 +162,21 @@ constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
       'graphic': this.options.graphic,
     });
     this.router.navigate([],{queryParams: {
-      avatarStyle:     AvatarStyle[this.options.style],
-      top:             Top[this.options.top],
-      accessories:     Accessories[this.options.accessories],
-      hairColor:       HairColor[this.options.hairColor],
-      hatColor:        HatColor[this.options.hatColor],
-      facialHair:      FacialHair[this.options.facialHair],
-      facialHairColor: FacialHairColor[this.options.facialHairColor],
-      clothes:         Cloth[this.options.clothes],
-      colorFabric:     ClothColor[this.options.clothColor],
-      eyes:            Eyes[this.options.eyes],
-      eyebrow:         Eyebrow[this.options.eyebrow],
-      mouth:           Mouth[this.options.mouth],
-      skin:            Skin[this.options.skin],
-      face:            Face[this.options.face],
-      graphic:         Graphic[this.options.graphic],
+      avatarStyle:     this.options.style,
+      top:             this.options.top,
+      accessories:     this.options.accessories,
+      hairColor:       this.options.hairColor,
+      hatColor:        this.options.hatColor,
+      facialHair:      this.options.facialHair,
+      facialHairColor: this.options.facialHairColor,
+      clothes:         this.options.clothes,
+      colorFabric:     this.options.clothColor,
+      eyes:            this.options.eyes,
+      eyebrow:         this.options.eyebrow,
+      mouth:           this.options.mouth,
+      skin:            this.options.skin,
+      face:            this.options.face,
+      graphic:         this.options.graphic,
     }});
     
   }

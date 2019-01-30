@@ -1,4 +1,4 @@
 export enum AvatarStyle {
-  CIRCLE,
-  TRANSPARENT,
+  CIRCLE = 'circle',
+  TRANSPARENT = 'transparent',
 }

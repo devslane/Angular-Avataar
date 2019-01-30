@@ -165,9 +165,17 @@ export class Options {
 
   }
 
-  private genrateRandom(e: any) {
-    const len = (Object.keys(e).length / 2) - 1;
+  private genrateRandom(enu: any) {
+    const e =this.getEnumTupple(enu);
+    const len = (Object.keys(e).length) - 1;
     const item = (Math.floor(Math.random() * len) + 0);
     return e[item];
+  }
+  private getEnumTupple(enumRef: any): Array<any> {
+    return Object.keys(enumRef).map(key => {
+      return enumRef[key];
+      
+    });
+  
   }
 }
