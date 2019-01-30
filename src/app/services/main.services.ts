@@ -168,6 +168,6 @@ export class Options {
   private genrateRandom(e: any) {
     const len = (Object.keys(e).length / 2) - 1;
     const item = (Math.floor(Math.random() * len) + 0);
-    return item;
+    return e[item];
   }
 }

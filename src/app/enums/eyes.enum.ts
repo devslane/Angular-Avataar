@@ -1,14 +1,14 @@
 export enum Eyes {
-  CLOSE,
-  CRY,
-  NONE,
-  DIZZY,
-  EYEROLL,
-  HAPPY,
-  HEARTS,
-  SIDE,
-  SQUINT,
-  SURPRISED,
-  WINK,
-  WINKWACKY
+  CLOSE = 'close',
+  CRY = 'cry',
+  NONE = 'none',
+  DIZZY ='dizzy' ,
+  EYEROLL = 'eyeroll',
+  HAPPY = 'happy',
+  HEARTS = 'hearts',
+  SIDE ='side',
+  SQUINT = 'squint',
+  SURPRISED = 'surprised',
+  WINK = 'wink',
+  WINKWACKY = 'winkwacky'
 }

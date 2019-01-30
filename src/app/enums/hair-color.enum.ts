@@ -1,12 +1,12 @@
 export enum HairColor {
-  AURBURN,
-  BLACK,
-  BLONDE,
-  blondegolden,
-  BROWN,
-  browndark,
-  pastelpink,
-  PLATINUM,
-  RED,
-  silvergray
+  AURBURN = 'aurburn',
+  BLACK = 'black',
+  BLONDE = 'blonde',
+  BLONDEGOLDEN = 'blondegolden',
+  BROWN = 'brown',
+  BROWNDARK = 'browndark',
+  PASTELPINK = 'pastelpink',
+  PLATINUM = 'platinum',
+  RED = 'red',
+  SILVERGRAY = 'silvergray'
 }
