@@ -1,9 +1,9 @@
 export enum Skin {
-  TANNED,
-  YELLOW,
-  PALE,
-  LIGHT,
-  BROWN,
-  DARK_BROWN,
-  BLACK,
+  TANNED = 'tanned',
+  YELLOW = 'yellow',
+  PALE = 'pale',
+  LIGHT = 'light',
+  BROWN = 'brown',
+  DARK_BROWN = 'dark_brown',
+  BLACK = 'black',
 }

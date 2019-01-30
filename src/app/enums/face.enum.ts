@@ -1,6 +1,6 @@
 export enum Face {
-  MOUTH,
-  NOSE,
-  EYES,
-  EYEBROW,
+  MOUTH = 'mouth',
+  NOSE = 'nose',
+  EYES = 'eyes',
+  EYEBROW = 'eyebrow',
 }

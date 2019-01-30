@@ -1,9 +1,9 @@
 export enum Accessories {
-  BLANK,
-  KURTA,
-  PRESCRIPITON01,
-  PRESCRIPITON02,
-  ROUND,
-  SUNGLASSES,
-  WAYFARERS,
+  BLANK = 'blank',
+  KURTA = 'kurta',
+  PRESCRIPITON01 = 'prescription01',
+  PRESCRIPITON02 = 'prescription02',
+  ROUND = 'round',
+  SUNGLASSES = 'sunglasses',
+  WAYFARERS = 'wayfarers',
 }

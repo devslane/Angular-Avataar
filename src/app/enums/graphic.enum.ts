@@ -1,13 +1,13 @@
 export enum Graphic {
-  BAT,
-  CUMBIA,
-  DEER,
-  DIAMOND,
-  HOLA,
-  PIZZA,
-  RESIST,
-  SELENA,
-  BEAR,
-  SKULLOUTLINE,
-  SKULL
+  BAT = 'bat',
+  CUMBIA = 'cumbia',
+  DEER = ' deer',
+  DIAMOND = 'diamond',
+  HOLA = 'hola',
+  PIZZA = 'pizza',
+  RESIST = 'resist',
+  SELENA = 'selena',
+  BEAR = 'bear',
+  SKULLOUTLINE = 'skulloutline',
+  SKULL = 'skull'
 }

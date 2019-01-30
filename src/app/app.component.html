@@ -16,7 +16,7 @@
       <span class="option">Avatar Style  &nbsp; </span>
       <mat-radio-group formControlName="avatarStyle">
         <ng-container  *ngFor="let option of avatarStyle">
-          <mat-radio-button class="pl-3" color="primary" [value]="+option.key">{{option.value}}</mat-radio-button>
+          <mat-radio-button class="pl-3" color="primary" [value]="option.value">{{option.value}}</mat-radio-button>
         </ng-container>
       </mat-radio-group>
     </div>
@@ -25,7 +25,27 @@
       <mat-form-field class="optionSelection">
         <mat-select formControlName="top">
           <ng-container *ngFor="let option of tops">
-            <mat-option [value]="+option.key">{{option.value}}</mat-option>
+            <mat-option [value]="option.value">{{option.value}}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="d-flex flex-row justify-content-between  align-items-center">
+      <div class="option">Hair-Color</div>
+      <mat-form-field class="optionSelection">
+        <mat-select formControlName="hairColor">
+          <ng-container *ngFor="let option of hairColor">
+            <mat-option [value]="option.value">{{option.value}}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="d-flex flex-row justify-content-between  align-items-center"  >
+      <div class="option">Hat-Color</div>
+      <mat-form-field class="optionSelection">
+        <mat-select formControlName="hatColor">
+          <ng-container *ngFor="let option of hatColor">
+            <mat-option [value]="option.value">{{option.value}}</mat-option>
           </ng-container>
         </mat-select>
       </mat-form-field>
@@ -35,7 +55,7 @@
       <mat-form-field class="optionSelection">
         <mat-select formControlName="facialHair">
           <ng-container *ngFor="let option of facialHair">
-            <mat-option [value]="+option.key">{{option.value}}</mat-option>
+            <mat-option [value]="option.value">{{option.value}}</mat-option>
           </ng-container>
         </mat-select>
       </mat-form-field>
@@ -46,7 +66,7 @@
       <mat-form-field class=" optionSelection">
         <mat-select formControlName="clothes">
           <ng-container *ngFor="let option of clothe">
-            <mat-option [value]="+option.key">{{option.value}}</mat-option>
+            <mat-option [value]="option.value">{{option.value}}</mat-option>
           </ng-container>
         </mat-select>
       </mat-form-field>
@@ -57,7 +77,7 @@
       <mat-form-field class="optionSelection">
         <mat-select formControlName="eyes">
           <ng-container *ngFor="let option of eyes">
-            <mat-option [value]="+option.key">{{option.value}}</mat-option>
+            <mat-option [value]="option.value">{{option.value}}</mat-option>
           </ng-container>
         </mat-select>
       </mat-form-field>
@@ -68,7 +88,7 @@
       <mat-form-field class="optionSelection">
         <mat-select formControlName="eyebrow">
           <ng-container *ngFor="let option of eyebrow">
-            <mat-option [value]="+option.key">{{option.value}}</mat-option>
+            <mat-option [value]="option.value">{{option.value}}</mat-option>
           </ng-container>
         </mat-select>
       </mat-form-field>
@@ -77,8 +97,8 @@
       <div class="option">Accessories</div>
       <mat-form-field class="optionSelection">
         <mat-select formControlName="accessories">
-          <ng-container *ngFor="let option of accessoriesArray">
-            <mat-option [value]="+option.key">{{option.value}}</mat-option>
+          <ng-container *ngFor="let option of accessories">
+            <mat-option [value]="option.value">{{option.value}}</mat-option>
           </ng-container>
         </mat-select>
       </mat-form-field>
@@ -88,7 +108,7 @@
       <mat-form-field class="optionSelection">
         <mat-select formControlName="facialHairColor">
           <ng-container *ngFor="let option of facialHairColor">
-            <mat-option [value]="+option.key">{{option.value}}</mat-option>
+            <mat-option [value]="option.value">{{option.value}}</mat-option>
           </ng-container>
         </mat-select>
       </mat-form-field>
@@ -98,27 +118,7 @@
       <mat-form-field class="optionSelection">
         <mat-select formControlName="graphic">
           <ng-container *ngFor="let option of graphic">
-            <mat-option [value]="+option.key">{{option.value}}</mat-option>
-          </ng-container>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="d-flex flex-row justify-content-between  align-items-center">
-      <div class="option">Hair-Color</div>
-      <mat-form-field class="optionSelection">
-        <mat-select formControlName="hairColor">
-          <ng-container *ngFor="let option of hairColor">
-            <mat-option [value]="+option.key">{{option.value}}</mat-option>
-          </ng-container>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="d-flex flex-row justify-content-between  align-items-center">
-      <div class="option">Hat-Color</div>
-      <mat-form-field class="optionSelection">
-        <mat-select formControlName="hatColor">
-          <ng-container *ngFor="let option of hatColor">
-            <mat-option [value]="+option.key">{{option.value}}</mat-option>
+            <mat-option [value]="option.value">{{option.value}}</mat-option>
           </ng-container>
         </mat-select>
       </mat-form-field>
@@ -128,7 +128,7 @@
       <mat-form-field class="optionSelection">
         <mat-select formControlName="face">
           <ng-container *ngFor="let option of face">
-            <mat-option [value]="+option.key">{{option.value}}</mat-option>
+            <mat-option [value]="option.value">{{option.value}}</mat-option>
           </ng-container>
         </mat-select>
       </mat-form-field>
@@ -138,7 +138,7 @@
       <mat-form-field class="optionSelection">
         <mat-select formControlName="colorFabric">
           <ng-container *ngFor="let option of clothColor">
-            <mat-option [value]="+option.key">{{option.value}}</mat-option>
+            <mat-option [value]="option.value">{{option.value}}</mat-option>
           </ng-container>
         </mat-select>
       </mat-form-field>
@@ -149,7 +149,7 @@
       <mat-form-field class="optionSelection">
         <mat-select formControlName="mouth">
           <ng-container *ngFor="let option of mouth">
-            <mat-option [value]="+option.key">{{option.value}}</mat-option>
+            <mat-option [value]="option.value">{{option.value}}</mat-option>
           </ng-container>
         </mat-select>
       </mat-form-field>
@@ -160,7 +160,7 @@
       <mat-form-field class="optionSelection">
         <mat-select formControlName="skin">
           <ng-container *ngFor="let option of skin">
-            <mat-option [value]="+option.key">{{option.value}}</mat-option>
+            <mat-option [value]="option.value">{{option.value}}</mat-option>
           </ng-container>
         </mat-select>
       </mat-form-field>

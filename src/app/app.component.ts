@@ -31,23 +31,24 @@ export class AppComponent implements OnInit {
 
   showAngular = false;
   showImage = false;
+  topsEnum = Top;
 
-  accessoriesArray: Array<any>;
-  clothColor: Array<any>;
-  clothe: Array<any>;
-  eyebrow: Array<any>;
-  eyes: Array<any>;
-  face: Array<any>;
-  facialHair: Array<any>;
-  facialHairColor: Array<any>;
-  graphic: Array<any>;
-  hairColor: Array<any>;
-  hatColor: Array<any>;
-  mouth: Array<any>;
-  skin: Array<any>;
-  tops: Array<any>;
-  avatarStyle: Array<any>;
-  public image: any;
+
+  accessories = Accessories;
+  clothColor = ClothColor;
+  clothe = Cloth;
+  eyebrow = Eyebrow;
+  eyes = Eyes;
+  face = Face;
+  facialHair = FacialHair;
+  facialHairColor = FacialHairColor;
+  graphic = Graphic;
+  hairColor = HairColor;
+  hatColor = HatColor;
+  mouth = Mouth;
+  skin = Skin;
+  tops = Top;
+  avatarStyle = AvatarStyle;
 
 constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
   ngOnInit() {
@@ -93,21 +94,21 @@ constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
     });
 
 
-    this.tops = this.getEnumTupple(Top);
-    this.facialHair = this.getEnumTupple(FacialHair);
-    this.clothe = this.getEnumTupple(Cloth);
-    this.eyes = this.getEnumTupple(Eyes);
-    this.eyebrow = this.getEnumTupple(Eyebrow);
-    this.mouth = this.getEnumTupple(Mouth);
-    this.skin = this.getEnumTupple(Skin);
-    this.accessoriesArray = this.getEnumTupple(Accessories);
-    this.clothColor = this.getEnumTupple(ClothColor);
-    this.face = this.getEnumTupple(Face);
-    this.facialHairColor = this.getEnumTupple(FacialHairColor);
-    this.graphic = this.getEnumTupple(Graphic);
-    this.hatColor = this.getEnumTupple(HatColor);
-    this.hairColor = this.getEnumTupple(HairColor);
-    this.avatarStyle = this.getEnumTupple(AvatarStyle);
+    // this.tops = this.getEnumTupple(Top);
+    // this.facialHair = this.getEnumTupple(FacialHair);
+    // this.clothe = this.getEnumTupple(Cloth);
+    // this.eyes = this.getEnumTupple(Eyes);
+    // this.eyebrow = this.getEnumTupple(Eyebrow);
+    // this.mouth = this.getEnumTupple(Mouth);
+    // this.skin = this.getEnumTupple(Skin);
+    // this.accessoriesArray = this.getEnumTupple(Accessories);
+    // this.clothColor = this.getEnumTupple(ClothColor);
+    // this.face = this.getEnumTupple(Face);
+    // this.facialHairColor = this.getEnumTupple(FacialHairColor);
+    // this.graphic = this.getEnumTupple(Graphic);
+    // this.hatColor = this.getEnumTupple(HatColor);
+    // this.hairColor = this.getEnumTupple(HairColor);
+    // this.avatarStyle = this.getEnumTupple(AvatarStyle);
 
 
     this.activatedRoute.queryParams.subscribe(data=> {
@@ -131,15 +132,15 @@ constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
 
   }
 
-  getEnumTupple(enumRef: any): Array<any> {
-    return Object.keys(enumRef).filter(k => !isNaN(+k)).map(key => {
-      return {
-        key: key,
-        value: enumRef[key]
-      };
-    });
-
-  }
+  // getEnumTupple(enumRef: any): Array<any> {
+  //   return Object.keys(enumRef).filter(k => !isNaN(+k)).map(key => {
+  //     return {
+  //       key: key,
+  //       value: enumRef[key]
+  //     };
+  //   });
+  //
+  // }
 
   getRandom() {
     this.options = new Options();
