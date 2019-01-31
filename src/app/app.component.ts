@@ -18,6 +18,7 @@ import {Eyes} from './enums/eyes.enum';
 import {Skin} from './enums/skin.enum';
 import {saveAs} from 'file-saver';
 import {ActivatedRoute, Router} from '@angular/router';
+import { filter } from 'rxjs/operators'
 
 @Component({
   selector: 'app-root',
@@ -31,6 +32,8 @@ export class AppComponent implements OnInit {
   public  angularCode ;
   showAngular = false;
   showImage = false;
+  showSvg = false;
+  svgData: string;
   topsEnum = Top;
   facialHairEnum = FacialHair;
   clothesEnum = Cloth;
@@ -78,7 +81,14 @@ export class AppComponent implements OnInit {
 
     this.avatarForm.valueChanges.subscribe(value => {
       this.options = value;
-
+      this.toggleAngular(false);
+      setTimeout(()=>{
+        return this.toggleSvg(false); 
+      }
+        ,3000
+      );
+     
+     console.log('change')
       this.router.navigate([], {
         queryParams: {
           avatarStyle: this.options.style,
@@ -98,7 +108,8 @@ export class AppComponent implements OnInit {
           graphic: this.options.graphic,
         }
       });
-    });
+      
+     });
 
 
     this.tops = this.getEnumTupple(Top);
@@ -118,25 +129,26 @@ export class AppComponent implements OnInit {
     this.avatarStyle = this.getEnumTupple(AvatarStyle);
 
 
-    this.activatedRoute.queryParams.subscribe(data => {
-
-      this.options.style = data['avatarStyle'];
-      this.options.top = data['top'];
-      this.options.accessories = data['accessories'];
-      this.options.hairColor = data['hairColor'];
-      this.options.hatColor = data['hatColor'];
-      this.options.facialHair = data['facialHair'];
-      this.options.facialHairColor = data['facialHairColor'];
-      this.options.clothes = data['clothes'];
-      this.options.clothColor = data['colorFabric'];
-      this.options.eyes = data['eyes'];
-      this.options.eyebrow = data['eyebrow'];
-      this.options.mouth = data['mouth'];
-      this.options.skin = data['skin'];
-      this.options.face = data['face'];
-      this.options.graphic = data['graphic'];
+    this.activatedRoute.queryParams.pipe(filter(a=> !!a))
+    .subscribe(data => {
+      if(data['data']){
+        this.options.style = data['avatarStyle'];
+        this.options.top = data['top'];
+        this.options.accessories = data['accessories'];
+        this.options.hairColor = data['hairColor'];
+        this.options.hatColor = data['hatColor'];
+        this.options.facialHair = data['facialHair'];
+        this.options.facialHairColor = data['facialHairColor'];
+        this.options.clothes = data['clothes'];
+        this.options.clothColor = data['colorFabric'];
+        this.options.eyes = data['eyes'];
+        this.options.eyebrow = data['eyebrow'];
+        this.options.mouth = data['mouth'];
+        this.options.skin = data['skin'];
+        this.options.face = data['face'];
+        this.options.graphic = data['graphic'];
+      }
     });
-
   }
 
   getEnumTupple(enumRef: any): Array<any> {
@@ -192,14 +204,38 @@ export class AppComponent implements OnInit {
   }
 
 
-  toggleAngular() {
-    this.showAngular = !this.showAngular;
-    console.log( this.activatedRoute.snapshot.queryParams);
-    this.angularCode =  this.activatedRoute.snapshot.queryParams;
+  toggleAngular(bool) {
+    if(bool){
+      this.showAngular = !this.showAngular;
+      this.showImage = false;
+      this.showSvg = false;
+    }
+    var jsonString = JSON.stringify(this.options,null,' ');
+
+    jsonString = jsonString.replace(/[{}]/g, '');
+    jsonString = jsonString.replace(/[:]/g, ' =');
+    jsonString = jsonString.replace(/[      ]/g, '');
+    jsonString = jsonString.replace(/[""]/g, '');
+
+    this.angularCode = "<app-avatar " +jsonString + "></app-avatar>";
+    
   }
 
   toggleImage() {
     this.showImage = !this.showImage;
+    this.showAngular = false;
+    this.showSvg = false;
+    this.toggleSvg(false);
+  }
+  toggleSvg(bool) {
+    if(bool) {
+      this.showSvg = !this.showSvg;
+      this.showAngular = false;
+      this.showImage = false;
+    }
+    const svgNode = document.getElementById('svgid');
+    this.svgData = svgNode.innerHTML;
+    // console.log(this.svgData)
   }
 
   downloadSvg() {
@@ -207,6 +243,12 @@ export class AppComponent implements OnInit {
     const data = svgNode.innerHTML;
     const svg = new Blob([data], {type: 'image/svg+xml'});
     saveAs(svg, 'avatar.svg');
+  }
+
+  copyText(inputElement){
+    inputElement.select();
+    document.execCommand('copy');
+    inputElement.setSelectionRange(0, 0);
   }
 
   public onDownloadPNG = () => {
@@ -221,7 +263,6 @@ export class AppComponent implements OnInit {
     const DOMURL = anyWindow.URL || anyWindow.webkitURL || window;
     const data = svgNode.innerHTML;
     const svg = new Blob([data], {type: 'image/svg+xml'});
-    console.log(svg);
     const img = new Image(canvas.width, canvas.height);
     const url = DOMURL.createObjectURL(svg);
     img.onload = () => {
@@ -238,7 +279,6 @@ export class AppComponent implements OnInit {
 
 
   private triggerDownload(imageBlob: Blob, fileName: string) {
-    console.log(imageBlob);
     saveAs(imageBlob, fileName);
   }
 }

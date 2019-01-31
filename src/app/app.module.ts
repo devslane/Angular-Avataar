@@ -18,6 +18,7 @@ import {CommonModule} from '@angular/common';
 import {MatDividerModule} from '@angular/material/divider';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import { RouterModule } from '@angular/router';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatIconModule,
     CommonModule,
     ReactiveFormsModule,
     MatDividerModule,
