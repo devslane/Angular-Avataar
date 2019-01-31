@@ -27,28 +27,28 @@ import { Route } from '@angular/compiler/src/core';
 export class AppComponent implements OnInit {
   avatarForm: FormGroup;
   options: Options;
-  private canvasRef: HTMLCanvasElement;
+  public canvasRef: HTMLCanvasElement;
 
   showAngular = false;
   showImage = false;
   topsEnum = Top;
 
 
-  accessories : Array<any>;
-  clothColor : Array<any>;
-  clothe : Array<any>;
-  eyebrow : Array<any>;
-  eyes : Array<any>;
-  face : Array<any>;
-  facialHair : Array<any>;
-  facialHairColor : Array<any>;
-  graphic : Array<any>;
-  hairColor : Array<any>;
-  hatColor : Array<any>;
-  mouth : Array<any>;
-  skin : Array<any>;
-  tops : Array<any>;
-  avatarStyle : Array<any>;
+  accessories: Array<any>;
+  clothColor: Array<any>;
+  clothe: Array<any>;
+  eyebrow: Array<any>;
+  eyes: Array<any>;
+  face: Array<any>;
+  facialHair: Array<any>;
+  facialHairColor: Array<any>;
+  graphic: Array<any>;
+  hairColor: Array<any>;
+  hatColor: Array<any>;
+  mouth: Array<any>;
+  skin: Array<any>;
+  tops: Array<any>;
+  avatarStyle: Array<any>;
 
 constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
   ngOnInit() {
@@ -74,7 +74,7 @@ constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
 
     this.avatarForm.valueChanges.subscribe(value => {
       this.options = value;
-      this.router.navigate([],{queryParams: {
+      this.router.navigate([], {queryParams: {
         avatarStyle:     this.options.style,
         top:             this.options.top,
         accessories:     this.options.accessories,
@@ -111,8 +111,8 @@ constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
     this.avatarStyle = this.getEnumTupple(AvatarStyle);
 
 
-    this.activatedRoute.queryParams.subscribe(data=> {
-      console.log('aaaa',data);
+    this.activatedRoute.queryParams.subscribe(data => {
+      console.log('aaaa', data);
       this.options.style = data['avatarStyle'];
       this.options.top = data['top'];
       this.options.accessories = data['accessories'];
@@ -135,9 +135,9 @@ constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
   getEnumTupple(enumRef: any): Array<any> {
     return Object.keys(enumRef).map(key => {
       return enumRef[key];
-      
+
     });
-  
+
   }
 
   getRandom() {
@@ -161,7 +161,7 @@ constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
       'face': this.options.face,
       'graphic': this.options.graphic,
     });
-    this.router.navigate([],{queryParams: {
+    this.router.navigate([], {queryParams: {
       avatarStyle:     this.options.style,
       top:             this.options.top,
       accessories:     this.options.accessories,
@@ -178,7 +178,7 @@ constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
       face:            this.options.face,
       graphic:         this.options.graphic,
     }});
-    
+
   }
 
 
@@ -192,7 +192,7 @@ constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
 
   downloadSvg() {
     const svgNode = document.getElementById('svgid');
-    const data = svgNode.outerHTML;
+    const data = svgNode.innerHTML;
     const svg = new Blob([data], {type: 'image/svg+xml'});
     saveAs(svg, 'avatar.svg');
   }
@@ -200,20 +200,21 @@ constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
   public onDownloadPNG = () => {
     const svgNode = document.getElementById('svgid');
     const canvas = document.getElementById('canvasRef') as HTMLCanvasElement;
+    canvas.width = 132;
+    canvas.height = 140;
     const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, 100, 100);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     const anyWindow = window as any;
     const DOMURL = anyWindow.URL || anyWindow.webkitURL || window;
-    const data = svgNode.outerHTML;
-
+    const data = svgNode.innerHTML;
     const svg = new Blob([data], {type: 'image/svg+xml'});
-    const img = new Image();
+    console.log(svg);
+    const img = new Image(canvas.width, canvas.height);
     const url = DOMURL.createObjectURL(svg);
     img.onload = () => {
       ctx.save();
-      ctx.scale(5, 5);
-      ctx.drawImage(img, 100, 100);
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       ctx.restore();
       DOMURL.revokeObjectURL(url);
       canvas.toBlob(imageBlob => {
@@ -221,11 +222,10 @@ constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
       });
     };
     img.src = url;
-    console.log(svg);
-
-  };
+  }
 
   private triggerDownload(imageBlob: Blob, fileName: string) {
+    console.log(imageBlob);
     saveAs(imageBlob, fileName);
   }
 }
