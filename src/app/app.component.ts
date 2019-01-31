@@ -17,8 +17,8 @@ import {AvatarStyle} from './enums/avatar-style.enum';
 import {Eyes} from './enums/eyes.enum';
 import {Skin} from './enums/skin.enum';
 import {saveAs} from 'file-saver';
-import { Router, ActivatedRoute} from '@angular/router';
-import { Route } from '@angular/compiler/src/core';
+import {ActivatedRoute, Router} from '@angular/router';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -28,10 +28,12 @@ export class AppComponent implements OnInit {
   avatarForm: FormGroup;
   options: Options;
   public canvasRef: HTMLCanvasElement;
-
+  public  angularCode ;
   showAngular = false;
   showImage = false;
   topsEnum = Top;
+  facialHairEnum = FacialHair;
+  clothesEnum = Cloth;
 
 
   accessories: Array<any>;
@@ -50,7 +52,9 @@ export class AppComponent implements OnInit {
   tops: Array<any>;
   avatarStyle: Array<any>;
 
-constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
+  constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
+
+
   ngOnInit() {
     this.options = new Options();
     this.avatarForm = new FormGroup({
@@ -74,23 +78,26 @@ constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
 
     this.avatarForm.valueChanges.subscribe(value => {
       this.options = value;
-      this.router.navigate([], {queryParams: {
-        avatarStyle:     this.options.style,
-        top:             this.options.top,
-        accessories:     this.options.accessories,
-        hairColor:       this.options.hairColor,
-        hatColor:        this.options.hatColor,
-        facialHair:      this.options.facialHair,
-        facialHairColor: this.options.facialHairColor,
-        clothes:         this.options.clothes,
-        colorFabric:     this.options.clothColor,
-        eyes:            this.options.eyes,
-        eyebrow:         this.options.eyebrow,
-        mouth:           this.options.mouth,
-        skin:            this.options.skin,
-        face:            this.options.face,
-        graphic:         this.options.graphic,
-      }});
+
+      this.router.navigate([], {
+        queryParams: {
+          avatarStyle: this.options.style,
+          top: this.options.top,
+          accessories: this.options.accessories,
+          hairColor: this.options.hairColor,
+          hatColor: this.options.hatColor,
+          facialHair: this.options.facialHair,
+          facialHairColor: this.options.facialHairColor,
+          clothes: this.options.clothes,
+          colorFabric: this.options.clothColor,
+          eyes: this.options.eyes,
+          eyebrow: this.options.eyebrow,
+          mouth: this.options.mouth,
+          skin: this.options.skin,
+          face: this.options.face,
+          graphic: this.options.graphic,
+        }
+      });
     });
 
 
@@ -112,7 +119,7 @@ constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
 
 
     this.activatedRoute.queryParams.subscribe(data => {
-      console.log('aaaa', data);
+
       this.options.style = data['avatarStyle'];
       this.options.top = data['top'];
       this.options.accessories = data['accessories'];
@@ -161,29 +168,34 @@ constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
       'face': this.options.face,
       'graphic': this.options.graphic,
     });
-    this.router.navigate([], {queryParams: {
-      avatarStyle:     this.options.style,
-      top:             this.options.top,
-      accessories:     this.options.accessories,
-      hairColor:       this.options.hairColor,
-      hatColor:        this.options.hatColor,
-      facialHair:      this.options.facialHair,
-      facialHairColor: this.options.facialHairColor,
-      clothes:         this.options.clothes,
-      colorFabric:     this.options.clothColor,
-      eyes:            this.options.eyes,
-      eyebrow:         this.options.eyebrow,
-      mouth:           this.options.mouth,
-      skin:            this.options.skin,
-      face:            this.options.face,
-      graphic:         this.options.graphic,
-    }});
+
+    this.router.navigate([], {
+      queryParams: {
+        avatarStyle: this.options.style,
+        top: this.options.top,
+        accessories: this.options.accessories,
+        hairColor: this.options.hairColor,
+        hatColor: this.options.hatColor,
+        facialHair: this.options.facialHair,
+        facialHairColor: this.options.facialHairColor,
+        clothes: this.options.clothes,
+        colorFabric: this.options.clothColor,
+        eyes: this.options.eyes,
+        eyebrow: this.options.eyebrow,
+        mouth: this.options.mouth,
+        skin: this.options.skin,
+        face: this.options.face,
+        graphic: this.options.graphic,
+      }
+    });
 
   }
 
 
   toggleAngular() {
     this.showAngular = !this.showAngular;
+    console.log( this.activatedRoute.snapshot.queryParams);
+    this.angularCode =  this.activatedRoute.snapshot.queryParams;
   }
 
   toggleImage() {
@@ -222,7 +234,8 @@ constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
       });
     };
     img.src = url;
-  }
+  };
+
 
   private triggerDownload(imageBlob: Blob, fileName: string) {
     console.log(imageBlob);

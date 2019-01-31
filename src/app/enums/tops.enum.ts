@@ -1,7 +1,7 @@
 export enum Top {
   NO_HAIR = 'no_hair',
   EYEPATCH = 'eyepatch',
-  HAT ='hat',
+  HAT = 'hat',
   HIJAB = 'hijab',
   TURBAN = 'turban',
   WINTER_HAT1 = 'winter_hat1',
