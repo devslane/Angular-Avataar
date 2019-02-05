@@ -131,7 +131,6 @@ export class AppComponent implements OnInit {
 
     this.activatedRoute.queryParams.pipe(filter(a=> !!a))
     .subscribe(data => {
-      console.log(data);
       if(data['top']){
         this.options.style = data['avatarStyle'];
         this.options.top = data['top'];
