@@ -85,7 +85,7 @@ export class AppComponent implements OnInit {
       setTimeout(()=>{
         return this.toggleSvg(false); 
       }
-        ,3000
+        ,0
       );
      
      console.log('change')
@@ -131,7 +131,8 @@ export class AppComponent implements OnInit {
 
     this.activatedRoute.queryParams.pipe(filter(a=> !!a))
     .subscribe(data => {
-      if(data['data']){
+      console.log(data);
+      if(data['top']){
         this.options.style = data['avatarStyle'];
         this.options.top = data['top'];
         this.options.accessories = data['accessories'];
