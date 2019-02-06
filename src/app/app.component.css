@@ -4,7 +4,7 @@
 }
 
 .main-heading-text {
-  color: rgb(106, 57, 215);
+  color: #5D3155;
   font-weight: 400;
   font-size: 32px;
 }
@@ -16,7 +16,7 @@
 }
 
 .start {
-  margin: 1rem 20rem 3rem 20rem;
+  margin:1rem 19% 3rem 19%;
 }
 
 .option {
@@ -30,4 +30,12 @@
 spacer {
   display: flex;
   flex-grow: 1;
+}
+.bottomButton{
+  background-color: #5D3155;
+}
+.tweetButton {
+  background-color:#1da1f2;
+  color: white;
+  text-decoration: none;
 }

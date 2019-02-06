@@ -77,8 +77,7 @@ export class AppComponent implements OnInit {
       'face': new FormControl(this.options.face),
       'graphic': new FormControl(this.options.graphic),
     });
-
-
+  
     this.avatarForm.valueChanges.subscribe(value => {
 
       this.options = value;

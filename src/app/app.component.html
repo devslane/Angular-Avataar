@@ -1,8 +1,8 @@
 <div class="pl-5 pr-5" class="start">
   <div class="d-flex flex-row main-heading justify-content-between  align-items-center">
-    <h1 class="main-heading-text">Avataaars Generator</h1>
+    <h1 class="main-heading-text">Generate Avatar at Davslane</h1>
     <div>
-      <button mat-flat-button color="primary" class="main-heading-button" (click)="getRandom()">
+      <button mat-flat-button color="primary" class="bottomButton" (click)="getRandom()">
         <i class="fa fa-random"></i>&nbsp; Random
       </button>
     </div>
@@ -172,33 +172,35 @@
     <div class="d-flex flex-row justify-content-between  align-items-center" style="width: fit-content;">
       <div class="d-flex flex-column"></div>
       <div class="d-flex flex-row">
-        <button mat-flat-button color="primary" class="m-1" (click)="onDownloadPNG()"><i
+        <button mat-flat-button color="primary" class="m-1 bottomButton" (click)="onDownloadPNG()"><i
           class="fa fa-download"></i> &nbsp; PNG
         </button>
-        <button mat-flat-button color="primary" class="m-1 " (click)="downloadSvg()"><i
+        <button mat-flat-button color="primary" class="m-1 bottomButton" (click)="downloadSvg()"><i
           class="fa fa-download"></i> &nbsp; SVG
         </button>
-        <button mat-flat-button color="primary" class="m-1 " (click)="toggleAngular(true)"
+        <button mat-flat-button color="primary" class="m-1 bottomButton" (click)="toggleAngular(true)"
                 *ngIf="!showAngular"><i class="fa fa-code"></i> &nbsp; Show Angular
         </button>
-        <button mat-flat-button color="primary" class="m-1 " (click)="toggleAngular(true)"
+        <button mat-flat-button color="primary" class="m-1 bottomButton" (click)="toggleAngular(true)"
                 *ngIf="showAngular"><i class="fa fa-code"></i> &nbsp; Hide Angular
         </button>
-        <button mat-flat-button color="primary" class="m-1" (click)="toggleImage()" *ngIf="false"><i
+        <button mat-flat-button color="primary" class="m-1 bottomButton" (click)="toggleImage()" *ngIf="false"><i
           class="fa fa-code"></i> &nbsp; Show image
         </button>
-        <button mat-flat-button color="primary" class="m-1" (click)="toggleImage()" *ngIf="false"><i
+        <button mat-flat-button color="primary" class="m-1 bottomButton" (click)="toggleImage()" *ngIf="false"><i
           class="fa fa-code"></i> &nbsp; Hide image
         </button>
-        <button mat-flat-button color="primary" class="m-1" (click)="toggleSvg(true)" *ngIf="!showSvg"><i
+        <button mat-flat-button color="primary" class="m-1 bottomButton" (click)="toggleSvg(true)" *ngIf="!showSvg"><i
           class="fa fa-code"></i> &nbsp; Show Svg
         </button>
-        <button mat-flat-button color="primary" class="m-1" (click)="toggleSvg(true)" *ngIf="showSvg"><i
+        <button mat-flat-button color="primary" class="m-1 bottomButton" (click)="toggleSvg(true)" *ngIf="showSvg"><i
           class="fa fa-code"></i> &nbsp; Hide Svg
         </button>
         <br>
       </div>
-      <button mat-flat-button color="primary"><i class="fa fa-twitter"></i>&nbsp; Tweet</button>
+      <a mat-flat-button class="tweetButton" target="_blank"
+  href="https://twitter.com/intent/tweet?hashtags=avataaars%2Cdevslane&original_referer=https%3A%2F%2Favatars.devslane.com%2F&ref_src=twsrc%5Etfw&text=I%20just%20created%20my%20avataaars%20here%20%F0%9F%98%86&tw_p=tweetbutton&url=https%3A%2F%2Fgetavataaars.com%2F"
+      ><i class="fa fa-twitter"></i>&nbsp; Tweet</a>
     </div>
 
   </form>
@@ -207,9 +209,7 @@
       <button mat-stroked-button (click)="copyText(angularText)"><i class="fa fa-copy"></i></button>
   </div>
   <div  *ngIf="showSvg">
-    <textarea style="width: 100%; height: 150px" type="text" #svgText>
-    {{svgData}}
-    </textarea>
+    <textarea style="width: 100%; height: 150px" type="text" #svgText>{{svgData}}</textarea>
     <button mat-stroked-button (click)="copyText(svgText)"><i class="fa fa-copy"></i></button>
   </div>
 
