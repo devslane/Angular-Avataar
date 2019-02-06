@@ -30,8 +30,18 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div class="d-flex flex-row justify-content-between  align-items-center" *ngIf=" options.top !== (topsEnum.HIJAB)">
-      <div class="option">Hair-Color</div>
+    <div class="d-flex flex-row justify-content-between  align-items-center" *ngIf=" options.top !== (topsEnum.EYEPATCH)">
+      <div class="option"><i class="fa fa-arrow-right"></i>&nbsp;Accessories</div>
+      <mat-form-field class="optionSelection">
+        <mat-select formControlName="accessories">
+          <ng-container *ngFor="let option of accessories">
+            <mat-option [value]="option">{{option}}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="d-flex flex-row justify-content-between  align-items-center" *ngIf=" showHairColour()">
+      <div class="option"><i class="fa fa-arrow-right"></i>&nbsp;Hair-Color</div>
       <mat-form-field class="optionSelection">
         <mat-select formControlName="hairColor">
           <ng-container *ngFor="let option of hairColor">
@@ -40,8 +50,8 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div class="d-flex flex-row justify-content-between  align-items-center">
-      <div class="option">Hat-Color</div>
+    <div class="d-flex flex-row justify-content-between  align-items-center" *ngIf="showHatColour()">
+      <div class="option"><i class="fa fa-arrow-right"></i>&nbsp;Hat-Color</div>
       <mat-form-field class="optionSelection">
         <mat-select formControlName="hatColor">
           <ng-container *ngFor="let option of hatColor">
@@ -60,6 +70,16 @@
         </mat-select>
       </mat-form-field>
     </div>
+    <div class="d-flex flex-row justify-content-between  align-items-center" *ngIf=" options.top !== (topsEnum.HIJAB)">
+      <div class="option"><i class="fa fa-arrow-right"></i>&nbsp;Facial-Hair Color</div>
+      <mat-form-field class="optionSelection">
+        <mat-select formControlName="facialHairColor">
+          <ng-container *ngFor="let option of facialHairColor">
+            <mat-option [value]="option">{{option}}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
     <div class="d-flex flex-row justify-content-between  align-items-center">
       <div class="option">Clothes</div>
@@ -71,7 +91,26 @@
         </mat-select>
       </mat-form-field>
     </div>
-
+    <div class="d-flex flex-row justify-content-between  align-items-center" *ngIf="showColourFabric()">
+      <div class="option"><i class="fa fa-arrow-right"></i>&nbsp; Color Fabric</div>
+      <mat-form-field class="optionSelection">
+        <mat-select formControlName="clothColor">
+          <ng-container *ngFor="let option of clothColor">
+            <mat-option [value]="option">{{option}}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="d-flex flex-row justify-content-between  align-items-center" *ngIf="options.clothes === (clothesEnum.GRAPHIC_SHIRT)">
+      <div class="option"><i class="fa fa-arrow-right"></i>&nbsp;Graphic</div>
+      <mat-form-field class="optionSelection">
+        <mat-select formControlName="graphic">
+          <ng-container *ngFor="let option of graphic">
+            <mat-option [value]="option">{{option}}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+    </div>
     <div class="d-flex flex-row justify-content-between  align-items-center">
       <div class="option">Eyes</div>
       <mat-form-field class="optionSelection">
@@ -83,7 +122,7 @@
       </mat-form-field>
     </div>
 
-    <div class="d-flex flex-row justify-content-between  align-items-center">
+    <div class="d-flex flex-row justify-content-between  align-items-center" >
       <div class="option">Eyebrows</div>
       <mat-form-field class="optionSelection">
         <mat-select formControlName="eyebrow">
@@ -93,36 +132,10 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div class="d-flex flex-row justify-content-between  align-items-center">
-      <div class="option">Accessories</div>
-      <mat-form-field class="optionSelection">
-        <mat-select formControlName="accessories">
-          <ng-container *ngFor="let option of accessories">
-            <mat-option [value]="option">{{option}}</mat-option>
-          </ng-container>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="d-flex flex-row justify-content-between  align-items-center" *ngIf=" options.top !== (topsEnum.HIJAB)">
-      <div class="option">Facial-Hair Color</div>
-      <mat-form-field class="optionSelection">
-        <mat-select formControlName="facialHairColor">
-          <ng-container *ngFor="let option of facialHairColor">
-            <mat-option [value]="option">{{option}}</mat-option>
-          </ng-container>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="d-flex flex-row justify-content-between  align-items-center" *ngIf=" options.top !== (topsEnum.HIJAB)">
-      <div class="option">Graphic</div>
-      <mat-form-field class="optionSelection">
-        <mat-select formControlName="graphic">
-          <ng-container *ngFor="let option of graphic">
-            <mat-option [value]="option">{{option}}</mat-option>
-          </ng-container>
-        </mat-select>
-      </mat-form-field>
-    </div>
+    
+    
+   
+    
     <!--<div class="d-flex flex-row justify-content-between  align-items-center">-->
     <!--<div class="option">Face</div>-->
     <!--<mat-form-field class="optionSelection">-->
@@ -133,16 +146,7 @@
     <!--</mat-select>-->
     <!--</mat-form-field>-->
     <!--</div>-->
-    <div class="d-flex flex-row justify-content-between  align-items-center" *ngIf=" options.top !== (topsEnum.HIJAB)">
-      <div class="option">Clothe-Color</div>
-      <mat-form-field class="optionSelection">
-        <mat-select formControlName="colorFabric">
-          <ng-container *ngFor="let option of clothColor">
-            <mat-option [value]="option">{{option}}</mat-option>
-          </ng-container>
-        </mat-select>
-      </mat-form-field>
-    </div>
+    
 
     <div class="d-flex flex-row justify-content-between  align-items-center">
       <div class="option">Mouth</div>

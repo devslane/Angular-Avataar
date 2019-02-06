@@ -56,10 +56,10 @@ export class AppComponent implements OnInit {
   avatarStyle: Array<any>;
 
   constructor(private router: Router, private  activatedRoute: ActivatedRoute) {}
-
-
+  
   ngOnInit() {
     this.options = new Options();
+    
     this.avatarForm = new FormGroup({
       'avatarStyle': new FormControl(this.options.style),
       'top': new FormControl(this.options.top),
@@ -69,7 +69,7 @@ export class AppComponent implements OnInit {
       'facialHair': new FormControl(this.options.facialHair),
       'facialHairColor': new FormControl(this.options.facialHairColor),
       'clothes': new FormControl(this.options.clothes),
-      'colorFabric': new FormControl(this.options.clothColor),
+      'clothColor': new FormControl(this.options.clothColor),
       'eyes': new FormControl(this.options.eyes),
       'eyebrow': new FormControl(this.options.eyebrow),
       'mouth': new FormControl(this.options.mouth),
@@ -80,15 +80,16 @@ export class AppComponent implements OnInit {
 
 
     this.avatarForm.valueChanges.subscribe(value => {
+
       this.options = value;
+      
       this.toggleAngular(false);
       setTimeout(()=>{
         return this.toggleSvg(false); 
       }
         ,0
       );
-     
-     console.log('change')
+      this.showColourFabric();
       this.router.navigate([], {
         queryParams: {
           avatarStyle: this.options.style,
@@ -99,7 +100,7 @@ export class AppComponent implements OnInit {
           facialHair: this.options.facialHair,
           facialHairColor: this.options.facialHairColor,
           clothes: this.options.clothes,
-          colorFabric: this.options.clothColor,
+          clothColor: this.options.clothColor,
           eyes: this.options.eyes,
           eyebrow: this.options.eyebrow,
           mouth: this.options.mouth,
@@ -128,7 +129,6 @@ export class AppComponent implements OnInit {
     this.hairColor = this.getEnumTupple(HairColor);
     this.avatarStyle = this.getEnumTupple(AvatarStyle);
 
-
     this.activatedRoute.queryParams.pipe(filter(a=> !!a))
     .subscribe(data => {
       if(data['top']){
@@ -140,14 +140,33 @@ export class AppComponent implements OnInit {
         this.options.facialHair = data['facialHair'];
         this.options.facialHairColor = data['facialHairColor'];
         this.options.clothes = data['clothes'];
-        this.options.clothColor = data['colorFabric'];
+        this.options.clothColor = data['clothColor'];
         this.options.eyes = data['eyes'];
         this.options.eyebrow = data['eyebrow'];
         this.options.mouth = data['mouth'];
         this.options.skin = data['skin'];
         this.options.face = data['face'];
         this.options.graphic = data['graphic'];
+
+        this.avatarForm.patchValue({
+          'avatarStyle': data['avatarStyle'],
+          'top': data['top'],
+          'accessories': data['accessories'],
+          'hairColor': data['hairColor'],
+          'hatColor': data['hatColor'],
+          'facialHair': data['facialHair'],
+          'facialHairColor': data['facialHairColor'],
+          'clothes': data['clothes'],
+          'clothColor': data['clothColor'],
+          'eyes':  data['eyes'],
+          'eyebrow': data['eyebrow'],
+          'mouth': data['mouth'],
+          'skin': data['skin'],
+          'face': data['face'],
+          'graphic': data['graphic'],
+        });
       }
+  
     });
   }
 
@@ -172,7 +191,7 @@ export class AppComponent implements OnInit {
       'facialHair': this.options.facialHair,
       'facialHairColor': this.options.facialHairColor,
       'clothes': this.options.clothes,
-      'colorFabric': this.options.clothColor,
+      'clothColor': this.options.clothColor,
       'eyes': this.options.eyes,
       'eyebrow': this.options.eyebrow,
       'mouth': this.options.mouth,
@@ -180,7 +199,6 @@ export class AppComponent implements OnInit {
       'face': this.options.face,
       'graphic': this.options.graphic,
     });
-
     this.router.navigate([], {
       queryParams: {
         avatarStyle: this.options.style,
@@ -191,7 +209,7 @@ export class AppComponent implements OnInit {
         facialHair: this.options.facialHair,
         facialHairColor: this.options.facialHairColor,
         clothes: this.options.clothes,
-        colorFabric: this.options.clothColor,
+        clothColor: this.options.clothColor,
         eyes: this.options.eyes,
         eyebrow: this.options.eyebrow,
         mouth: this.options.mouth,
@@ -235,7 +253,6 @@ export class AppComponent implements OnInit {
     }
     const svgNode = document.getElementById('svgid');
     this.svgData = svgNode.innerHTML;
-    // console.log(this.svgData)
   }
 
   downloadSvg() {
@@ -254,8 +271,8 @@ export class AppComponent implements OnInit {
   public onDownloadPNG = () => {
     const svgNode = document.getElementById('svgid');
     const canvas = document.getElementById('canvasRef') as HTMLCanvasElement;
-    canvas.width = 132;
-    canvas.height = 140;
+    canvas.width = 400;
+    canvas.height = 408;
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -280,5 +297,37 @@ export class AppComponent implements OnInit {
 
   private triggerDownload(imageBlob: Blob, fileName: string) {
     saveAs(imageBlob, fileName);
+  }
+
+  showColourFabric(){
+    if((this.options.clothes === this.clothesEnum.BLAZER_SHIRT) || (this.options.clothes ===  this.clothesEnum.BLAZER_SWEATER) ){
+      return false;
+    }
+    return true;
+  }
+  showHatColour() {
+    if((this.options.top === this.topsEnum.HIJAB)||(this.options.top === this.topsEnum.TURBAN) ||
+     (this.options.top === this.topsEnum.WINTER_HAT1)||(this.options.top === this.topsEnum.WINTER_HAT2) ||
+     (this.options.top === this.topsEnum.WINTER_HAT3)||(this.options.top === this.topsEnum.WINTER_HAT4)) {
+       return true;
+     }
+     else return false;
+  }
+  showHairColour() {
+    if((this.options.top === this.topsEnum.LONGHAIR_BIGHAIR) || (this.options.top === this.topsEnum.LONGHAIR_BOB) ||
+    (this.options.top === this.topsEnum.LONGHAIR_BUN) || (this.options.top === this.topsEnum.LONGHAIR_CURLY) ||
+    (this.options.top === this.topsEnum.LONGHAIR_CURVY) || (this.options.top === this.topsEnum.LONGHAIR_DREADS) ||
+    (this.options.top === this.topsEnum.LONGHAIR_FRO) || (this.options.top === this.topsEnum.LONGHAIR_FROBAND) ||
+    (this.options.top === this.topsEnum.LONGHAIR_NOTTOOLONG )|| (this.options.top === this.topsEnum.LONGHAIR_MIAWALLACE ) ||
+    (this.options.top === this.topsEnum.LONGHAIR_STRAIGHT )|| (this.options.top === this.topsEnum.LONGHAIR_STRAIGHT2 )||
+    (this.options.top === this.topsEnum.LONGHAIR_STRAIGHTSTRAND )|| (this.options.top === this.topsEnum.SHORTHAIR_DREADS01)||
+    (this.options.top === this.topsEnum.SHORTHAIR_DREADS02)|| (this.options.top === this.topsEnum.SHORTHAIR_FRIZZLE )||
+    (this.options.top === this.topsEnum.SHORTHAIR_SHAGGYMULLET )|| (this.options.top === this.topsEnum.SHORTHAIR_SHORTCURLY )||
+    (this.options.top === this.topsEnum.SHORTHAIR_SHORTFLAT)|| (this.options.top === this.topsEnum.SHORTHAIR_SHORTROUND)|| 
+    (this.options.top === this.topsEnum.SHORTHAIR_SHORTWAVED)|| (this.options.top === this.topsEnum.SHORTHAIR_SIDES)||
+    (this.options.top === this.topsEnum.SHORTHAIR_THECAESAR)|| (this.options.top === this.topsEnum.SHORTHAIR_THECAESARSIDEPART)) {
+      return true;
+    }
+    else return false;
   }
 }
