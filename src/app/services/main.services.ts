@@ -147,35 +147,34 @@ export class Options {
 
 
   getRandom() {
-    this.style = this.genrateRandom(AvatarStyle);
-    this.top = this.genrateRandom(Top);
-    this.face = this.genrateRandom(Face);
-    this.accessories = this.genrateRandom(Accessories);
-    this.hairColor = this.genrateRandom(HairColor);
-    this.facialHair = this.genrateRandom(FacialHair);
-    this.clothes = this.genrateRandom(Cloth);
-    this.clothColor = this.genrateRandom(ClothColor);
-    this.eyes = this.genrateRandom(Eyes);
-    this.eyebrow = this.genrateRandom(Eyebrow);
-    this.mouth = this.genrateRandom(Mouth);
-    this.skin = this.genrateRandom(Skin);
-    this.hatColor = this.genrateRandom(HatColor);
-    this.facialHairColor = this.genrateRandom(FacialHairColor);
-    this.graphic = this.genrateRandom(Graphic);
+    this.style = this._generateRandom(AvatarStyle);
+    this.top = this._generateRandom(Top);
+    this.face = this._generateRandom(Face);
+    this.accessories = this._generateRandom(Accessories);
+    this.hairColor = this._generateRandom(HairColor);
+    this.facialHair = this._generateRandom(FacialHair);
+    this.clothes = this._generateRandom(Cloth);
+    this.clothColor = this._generateRandom(ClothColor);
+    this.eyes = this._generateRandom(Eyes);
+    this.eyebrow = this._generateRandom(Eyebrow);
+    this.mouth = this._generateRandom(Mouth);
+    this.skin = this._generateRandom(Skin);
+    this.hatColor = this._generateRandom(HatColor);
+    this.facialHairColor = this._generateRandom(FacialHairColor);
+    this.graphic = this._generateRandom(Graphic);
 
   }
 
-  private genrateRandom(enu: any) {
-    const e =this.getEnumTupple(enu);
-    const len = (Object.keys(e).length) - 1;
-    const item = (Math.floor(Math.random() * len) + 0);
+  private _generateRandom(enu: any) {
+    const e = this._getEnumTuple(enu);
+    const len = Object.keys(e).length - 1;
+    const item = Math.floor(Math.random() * len);
     return e[item];
   }
-  private getEnumTupple(enumRef: any): Array<any> {
+
+  private _getEnumTuple(enumRef: any): Array<any> {
     return Object.keys(enumRef).map(key => {
       return enumRef[key];
-      
     });
-  
   }
 }
