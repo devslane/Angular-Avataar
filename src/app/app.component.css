@@ -16,7 +16,7 @@
 }
 
 .start {
-  margin:1rem 19% 3rem 19%;
+  margin: 1rem 19% 3rem 19%;
 }
 
 .option {
@@ -27,15 +27,17 @@
   width: 70%;
 }
 
-spacer {
+.spacer {
   display: flex;
   flex-grow: 1;
 }
-.bottomButton{
+
+.bottomButton {
   background-color: #5D3155;
 }
+
 .tweetButton {
-  background-color:#1da1f2;
+  background-color: #1da1f2;
   color: white;
   text-decoration: none;
 }
